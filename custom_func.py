@@ -49,8 +49,9 @@ def imageLoader(img_dir, img_list, mask_dir, mask_list, batch_size):
 
     # Keras generators need to loop infinitely, so use `while True`
     while True:
-        batch_start = 0  # Initialize the starting index of the batch
-        batch_end = batch_size  # Initialize the ending index of the batch
+        # Initialize batch indices
+        batch_start = 0 
+        batch_end = batch_size  
 
         # Loop through the dataset in batches
         while batch_start < L:
