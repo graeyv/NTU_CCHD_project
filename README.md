@@ -33,6 +33,7 @@ ADD SUMMARY
 
 ### 5. Training
 - Explain training script
+- Explain where we trained the model (NTU server)
 
 ### 6. Evaluation
 - Explain evaluation script
