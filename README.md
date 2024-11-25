@@ -12,14 +12,30 @@ ADD SUMMARY
 * [6. Evaluation](#6-evaluation)
 
 ### 1. Prerequisites and Data
+- Explain data source
+- Explain packages
 
 ### 2. Preprocessing Data
+- Explain preprocessing steps (i.e. the script)
 
 ### 3. Functions
+- Explain custom functions script
 
 ### 4. Models
+- Explain models script
+- Perhaps extend the simple 3D U-Net
+- Perhaps play around with:
+  - loss function
+  - optimizer
+  - model paramaters (# epochs, etc.)
+  - run ready-made models imported from libraries
+  - etc. 
 
 ### 5. Training
+- Explain training script
 
 ### 6. Evaluation
+- Explain evaluation script
+- Metrics
+- Benchmarks
 
