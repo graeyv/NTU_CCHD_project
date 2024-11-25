@@ -3,15 +3,31 @@ from keras.layers import Input, Conv3D, MaxPooling3D, concatenate, Conv3DTranspo
 from keras.optimizers import Adam
 from keras.metrics import MeanIoU
 
-kernel_initializer =  'he_uniform' #OPTION TO TRY DIFFERENT MODELS
+# Option to choose different kernel
+kernel_initializer =  'he_uniform' 
 
-################################################################
 def simple_unet_model(IMG_HEIGHT, IMG_WIDTH, IMG_DEPTH, IMG_CHANNELS, num_classes):
-#Build the model
+     """
+    Builds a 3D U-Net model for volumetric image segmentation.
+    
+    Parameters:
+    - IMG_HEIGHT, IMG_WIDTH, IMG_DEPTH: Dimensions of the input volume.
+    - IMG_CHANNELS: Number of channels in the input (e.g., grayscale=1, RGB=3).
+    - num_classes: Number of output segmentation classes.
+    
+    Returns:
+    - A compiled Keras Model implementing the 3D U-Net architecture.
+    
+    Features:
+    - Contracting path: Extracts spatial features via 3D convolution and pooling.
+    - Expansive path: Upsamples and concatenates features for precise segmentation.
+    - Dropout layers: Added for regularization at each level.
+    - Final layer: Outputs a softmax activation for multi-class segmentation.
+    """
     inputs = Input((IMG_HEIGHT, IMG_WIDTH, IMG_DEPTH, IMG_CHANNELS))
     s = inputs
 
-    #Contraction path
+    # Contracting path
     c1 = Conv3D(16, (3, 3, 3), activation='relu', kernel_initializer=kernel_initializer, padding='same')(s)
     c1 = Dropout(0.1)(c1)
     c1 = Conv3D(16, (3, 3, 3), activation='relu', kernel_initializer=kernel_initializer, padding='same')(c1)
@@ -36,7 +52,7 @@ def simple_unet_model(IMG_HEIGHT, IMG_WIDTH, IMG_DEPTH, IMG_CHANNELS, num_classe
     c5 = Dropout(0.3)(c5)
     c5 = Conv3D(256, (3, 3, 3), activation='relu', kernel_initializer=kernel_initializer, padding='same')(c5)
     
-    #Expansive path 
+    # Expansive path 
     u6 = Conv3DTranspose(128, (2, 2, 2), strides=(2, 2, 2), padding='same')(c5)
     u6 = concatenate([u6, c4])
     c6 = Conv3D(128, (3, 3, 3), activation='relu', kernel_initializer=kernel_initializer, padding='same')(u6)
