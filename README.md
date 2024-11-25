@@ -3,6 +3,11 @@ This is a repository for the group project in the course: *Cloud Computing for H
 
 ADD SUMMARY
 
+**THINGS TO DO**
+- extend code (perhaps different loss functions, optimizers, parameters, ready-made models, etc.)
+- complete repository
+- train model on server
+
 ### Content
 * [1. Prerequisistes and Data](#1-prerequisites-and-data)
 * [2. Preprocessing Data](#2-preprocessing-data)
