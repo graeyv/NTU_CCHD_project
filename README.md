@@ -14,6 +14,7 @@ ADD SUMMARY
 ### 1. Prerequisites and Data
 - Explain data source
 - Explain packages
+BraTS2020 Dataset: https://www.kaggle.com/datasets/awsaf49/brats20-dataset-training-validation?resource=download
 
 ### 2. Preprocessing Data
 - Explain preprocessing steps (i.e. the script)
